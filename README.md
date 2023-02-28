@@ -7,3 +7,4 @@ Today i started a new project TikTok
 26/2 Config Router/Layout 
      Install classnames
 27/2 Build DefaultLayout, OnlyHeader, SCSS
+28/2 Install react-icons, Build Header(focus search)
