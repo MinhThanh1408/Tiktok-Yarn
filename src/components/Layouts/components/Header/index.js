@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import { IoCloseCircle } from 'react-icons/io5';
+import { IoCloseCircle, IoAddOutline } from 'react-icons/io5';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { GoSearch } from 'react-icons/go';
 import Tippy from '@tippyjs/react/headless';
@@ -9,6 +9,7 @@ import styles from './Header.module.scss';
 import images from "src/assets/images";
 import { Wrapper as PopperWrapper } from "src/components/Popper";
 import AccountItem from "src/components/AccountItem";
+import Button from "src/components/Button";
 
 const cx = classNames.bind(styles);
 
@@ -53,6 +54,7 @@ function Header() {
                             </button>
                             <button className={cx('loading')}>
                                 <AiOutlineLoading3Quarters />
+                                
                             </button>
                             <button className={cx('search-btn')}>
                                 <GoSearch />
@@ -61,7 +63,12 @@ function Header() {
                     </Tippy>
                 </div>
                 <div className={cx('actions')}>
-                    Actions
+                    <Button text leftIcon={<IoAddOutline />}>
+                        Upload
+                    </Button>
+                    <Button primary>
+                        Register
+                    </Button>
                 </div>
             </div>
 

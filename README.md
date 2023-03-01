@@ -9,3 +9,4 @@ Today i started a new project TikTok
 27/2 Build DefaultLayout, OnlyHeader, SCSS
 28/2 Install react-icons, Build Header(focus search)
      Install tippyjs/react 
+1/3  Build Button

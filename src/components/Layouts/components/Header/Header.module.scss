@@ -15,7 +15,6 @@
 .inner {
     height: 100%;
     width: var(--default-layout-width);
-    background: #ccc;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,6 +23,9 @@
 
 .logo {
     cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .search,
@@ -114,4 +116,8 @@
     &:active {
         background-color: rgba(22, 24, 35, 0.06);
     }
+}
+.actions{
+    display: flex;
+    align-items: center;
 }
