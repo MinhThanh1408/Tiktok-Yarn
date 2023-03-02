@@ -24,6 +24,7 @@
 .icon{
     display: inline-flex;
     align-items: center;
+    width: 24px;
 }
 .icon+.title,
 .title+.icon {
@@ -55,7 +56,7 @@
     }
 }
 
-.outline {
+.outlinePink {
     color: var(--primary);
     border-color: currentColor;
 
@@ -66,8 +67,15 @@
 
 }
 
-.text {
+.outlineGray {
     border-color: #ccc;
+
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+.text {
+    color: var(--text-color);
 
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);

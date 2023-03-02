@@ -2,36 +2,56 @@ import classNames from "classnames/bind";
 import { IoCloseCircle, IoAddOutline } from 'react-icons/io5';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { GoSearch } from 'react-icons/go';
+import { BsThreeDotsVertical, BsQuestionCircle, BsKeyboard } from 'react-icons/bs';
+import { MdLanguage } from 'react-icons/md';
 import Tippy from '@tippyjs/react/headless';
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 import styles from './Header.module.scss';
 import images from "src/assets/images";
 import { Wrapper as PopperWrapper } from "src/components/Popper";
 import AccountItem from "src/components/AccountItem";
 import Button from "src/components/Button";
+import Menu from "src/components/Popper/Menu";
 
 const cx = classNames.bind(styles);
 
+const MENU_ITEMS = [
+    {
+        icon: <MdLanguage />,
+        text: 'English',
+    },
+    {
+        icon: <BsQuestionCircle />,
+        text: 'Feedback and help',
+        to: '/feedback'
+    },
+    {
+        icon: <BsKeyboard />,
+        text: 'Keyboard shortcuts',
+    }
+]
+
 function Header() {
-    const [searchResults, setSearchResults] = useState([]);
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([1]);
-        }, 1000)
-    })
+    // const [searchResults, setSearchResults] = useState([]);
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setSearchResults([1]);
+    //     }, 1000)
+    // })
 
 
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <a href='/' className={cx('logo')}>
                     <img src={images.logo} alt='Logo Alien' />
-                </div>
+                </a>
                 <div className={cx('search-tippy')}>
                     <Tippy
                         interactive={true}
-                        visible={searchResults.length > 0}
+                        visible={false}
+                        // visible={searchResults.length > 0}
                         render={(attrs) => (
                             <div className={cx('search-result')} tabIndex='-1' {...attrs}>
                                 <PopperWrapper>
@@ -54,7 +74,7 @@ function Header() {
                             </button>
                             <button className={cx('loading')}>
                                 <AiOutlineLoading3Quarters />
-                                
+
                             </button>
                             <button className={cx('search-btn')}>
                                 <GoSearch />
@@ -63,12 +83,19 @@ function Header() {
                     </Tippy>
                 </div>
                 <div className={cx('actions')}>
-                    <Button text leftIcon={<IoAddOutline />}>
+                    <Button outlineGray leftIcon={<IoAddOutline />}>
                         Upload
                     </Button>
                     <Button primary>
                         Register
                     </Button>
+                    <Menu
+                        items={MENU_ITEMS}
+                    >
+                        <button className={cx('more-button')}>
+                            <BsThreeDotsVertical />
+                        </button>
+                    </Menu>
                 </div>
             </div>
 
