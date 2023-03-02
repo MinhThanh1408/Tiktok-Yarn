@@ -19,16 +19,32 @@ const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
         icon: <MdLanguage />,
-        text: 'English',
+        title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+
+            ]
+        }
     },
     {
         icon: <BsQuestionCircle />,
-        text: 'Feedback and help',
+        title: 'Feedback and help',
         to: '/feedback'
     },
     {
         icon: <BsKeyboard />,
-        text: 'Keyboard shortcuts',
+        title: 'Keyboard shortcuts',
     }
 ]
 
@@ -39,6 +55,16 @@ function Header() {
     //         setSearchResults([1]);
     //     }, 1000)
     // })
+
+    const handleMenuChange = (menuItem) => {
+        switch (menuItem.type) {
+            case 'language':
+                console.log(menuItem.code)
+                break;
+            default:
+                break;
+        }
+    }
 
 
     return (
@@ -91,6 +117,7 @@ function Header() {
                     </Button>
                     <Menu
                         items={MENU_ITEMS}
+                        onChange={handleMenuChange}
                     >
                         <button className={cx('more-button')}>
                             <BsThreeDotsVertical />

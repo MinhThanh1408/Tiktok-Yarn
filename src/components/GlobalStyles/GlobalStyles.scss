@@ -13,6 +13,7 @@
 }
 
 * {
+    font-family: 'IBM Plex Sans';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -37,7 +38,8 @@ input,
     outline: none;
     border: none;
 }
-a[href]{
+
+a[href] {
     color: var(text-color);
     text-decoration: none;
 }
