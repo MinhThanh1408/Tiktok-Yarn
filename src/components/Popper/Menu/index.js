@@ -42,7 +42,6 @@ function Menu({
     }
     return (
         <Tippy
-            visible
             offset={[12, 10]}
             delay={[0, 200]}
             placement="bottom-end"

@@ -4,8 +4,8 @@ import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { GoSearch } from 'react-icons/go';
 import { BsThreeDotsVertical, BsQuestionCircle, BsKeyboard, BsCoin, BsCameraVideo } from 'react-icons/bs';
 import { MdLanguage } from 'react-icons/md';
-import { FiSend, FiLogOut } from 'react-icons/fi';
-import { BiMessageAltMinus, BiUser } from 'react-icons/bi';
+import { FiLogOut } from 'react-icons/fi';
+import { BiUser } from 'react-icons/bi';
 import TippyHeadless from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -17,6 +17,8 @@ import { Wrapper as PopperWrapper } from "src/components/Popper";
 import AccountItem from "src/components/AccountItem";
 import Button from "src/components/Button";
 import Menu from "src/components/Popper/Menu";
+import Image from "src/components/Image";
+import { MessageIcon, InboxIcon } from "src/components/Icon";
 
 const cx = classNames.bind(styles);
 
@@ -154,12 +156,11 @@ function Header() {
                                 Upload
                             </Button>
                             <Tippy
-                                trigger="click"
                                 content='Messages'
                                 placement="bottom"
                             >
                                 <button className={cx('action-button')}>
-                                    <FiSend />
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
                             <Tippy
@@ -167,7 +168,7 @@ function Header() {
                                 placement="bottom"
                             >
                                 <button className={cx('action-button')}>
-                                    <BiMessageAltMinus />
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
@@ -189,7 +190,13 @@ function Header() {
                         onChange={handleMenuChange}
                     >
                         {currentUser ? (
-                            <img className={cx('avatar')} src={images.avatarDefault} alt='useravatar' />
+                            <Image
+                                className={cx('avatar')}
+                                src='test'
+                                // src='http s://scontent.fsgn15-1.fna.fbcdn.net/v/t39.30808-1/333794981_573345321494830_6626873759492579978_n.jpg?stp=cp0_dst-jpg_p40x40&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=-1-p8XyjDP8AX-NYhgZ&_nc_ht=scontent.fsgn15-1.fna&oh=00_AfCHalmsf9xjH7fIkgkBGOaQ1dhmcGhRzXsWsHzEzU1Iow&oe=64062F3C'
+                                alt='useravatar'
+                                fallback={images.avatarError}
+                            />
                         ) : (
                             <button className={cx('more-button')}>
                                 <BsThreeDotsVertical />
