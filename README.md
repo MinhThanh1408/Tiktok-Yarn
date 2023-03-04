@@ -10,4 +10,6 @@ Today i started a new project TikTok
 28/2 Install react-icons, Build Header(focus search)
      Install tippyjs/react 
 1/3  Build Button
-2/4  Build more button (menu)
+2/3  Build more button (menu)
+3/3  Finish UI Header
+4/3  Build Logic Header Search
