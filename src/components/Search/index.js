@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import TippyHeadless from '@tippyjs/react/headless';
 import { IoCloseCircle } from 'react-icons/io5';
-// import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useEffect, useState, useRef } from "react";
 
 import { Wrapper as PopperWrapper } from "src/components/Popper";
@@ -18,14 +18,27 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1]);
-        }, 0)
-    },[])
+        if (!searchValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        setLoading(true);
+
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then(res => res.json())
+            .then(res => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch(()=>{
+                setLoading(false);
+            })
+    }, [searchValue])
     // Cần xem lại useEffect
 
     const handleClear = () => {
@@ -37,7 +50,7 @@ function Search() {
     const handleHideResult = () => {
         setShowResult(false);
     };
-    
+
     return (
         <div className={cx('wrapper')}>
             <TippyHeadless
@@ -49,11 +62,9 @@ function Search() {
                             <h4 className={cx('search-title')}>
                                 Accounts
                             </h4>
-                            <AccountItem />
-                            <AccountItem />
-                            <AccountItem />
-                            <AccountItem />
-                            <AccountItem />
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
                         </PopperWrapper>
                     </div>
                 )}
@@ -69,7 +80,7 @@ function Search() {
                         onChange={e => setSearchValue(e.target.value)}
                         onFocus={() => setShowResult(true)}
                     />
-                    {!!searchValue && (
+                    {!!searchValue && !loading && (
 
                         <button
                             className={cx('clear')}
@@ -78,9 +89,11 @@ function Search() {
                             <IoCloseCircle />
                         </button>
                     )}
-                    {/* <button className={cx('loading')}>
-                        <AiOutlineLoading3Quarters />
-                    </button> */}
+                    {loading && (
+                        <button className={cx('loading')}>
+                            <AiOutlineLoading3Quarters />
+                        </button>
+                    )}
                     <button className={cx('search-btn')}>
                         <SearchIcon />
                     </button>
