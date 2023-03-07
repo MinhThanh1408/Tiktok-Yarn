@@ -4,15 +4,15 @@ import { IoCloseCircle } from 'react-icons/io5';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useEffect, useState, useRef } from "react";
 
+import * as searchServices from 'src/apiServices/searchServices'
 import { Wrapper as PopperWrapper } from "src/components/Popper";
 import AccountItem from "src/components/AccountItem";
 import styles from "./Search.module.scss";
 import { SearchIcon } from "src/components/Icon";
 import { useDebounce } from "src/hooks";
 
+
 const cx = classNames.bind(styles);
-
-
 
 
 function Search() {
@@ -29,17 +29,17 @@ function Search() {
             setSearchResult([]);
             return;
         }
-        setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
-            .then(res => res.json())
-            .then(res => {
-                setSearchResult(res.data);
-                setLoading(false);
-            })
-            .catch(()=>{
-                setLoading(false);
-            })
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchServices.search(debounce);
+
+            setSearchResult(result);
+            setLoading(false);
+
+        };
+
+        fetchApi();
     }, [debounce])
     // Cần xem lại useEffect
 
