@@ -12,7 +12,7 @@ import images from "src/assets/images";
 import Button from "src/components/Button";
 import Menu from "src/components/Popper/Menu";
 import Image from "src/components/Image";
-import Search from "src/components/Search";
+import Search from "src/components/Layouts/components/Search";
 import { MessageIcon, InboxIcon } from "src/components/Icon";
 
 const cx = classNames.bind(styles);
