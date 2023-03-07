@@ -1,3 +1,6 @@
+import routesConfig from 'src/config/routes'
+
+
 import Home from "src/pages/Home";
 import Following from "src/pages/Following";
 import Upload from "src/pages/Upload";
@@ -5,20 +8,20 @@ import Profile from "src/pages/Profile";
 
 const publicRoutes = [
     {
-        path: '/',
+        path: routesConfig.home,
         component: Home
     },
     {
-        path: '/following',
+        path: routesConfig.following,
         component: Following,
     },
     {
-        path: '/upload',
+        path: routesConfig.upload,
         component: Upload,
         layout: null,
     },
     {
-        path: '/:nickname',
+        path: routesConfig.profile,
         component: Profile,
     }
 ];

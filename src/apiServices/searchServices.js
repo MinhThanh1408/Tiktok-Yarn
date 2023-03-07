@@ -1,10 +1,11 @@
 import * as request from "src/utils/request";
-export const search = async ({ query, type = 'less' }) => {
+
+export const search = async (q, type = 'less') => {
     try {
         const res = await request.get(`users/search`, {
             params: {
-                q: query,
-                type: type,
+                q,
+                type,
             }
         });
         return res.data;

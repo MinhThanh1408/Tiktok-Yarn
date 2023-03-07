@@ -6,6 +6,7 @@ import { FiLogOut } from 'react-icons/fi';
 import { BiUser } from 'react-icons/bi';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import images from "src/assets/images";
@@ -14,6 +15,7 @@ import Menu from "src/components/Popper/Menu";
 import Image from "src/components/Image";
 import Search from "src/components/Layouts/components/Search";
 import { MessageIcon, InboxIcon } from "src/components/Icon";
+import routesConfig from 'src/config/routes'
 
 const cx = classNames.bind(styles);
 
@@ -101,9 +103,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <a href='/' className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo')}>
                     <img src={images.logo} alt='Logo Alien' />
-                </a>
+                </Link>
                 <Search/>
                 <div className={cx('actions')}>
                     {currentUser ? (
@@ -144,11 +146,11 @@ function Header() {
                     <Menu
                         items={currentUser ? USER_MENU : MENU_ITEMS}
                         onChange={handleMenuChange}
+                        hideOnClick={false}
                     >
                         {currentUser ? (
                             <Image
                                 className={cx('avatar')}
-                                // src='test'
                                 src='https://scontent.fsgn15-1.fna.fbcdn.net/v/t39.30808-1/333794981_573345321494830_6626873759492579978_n.jpg?stp=cp0_dst-jpg_p40x40&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_ohc=-1-p8XyjDP8AX-NYhgZ&_nc_ht=scontent.fsgn15-1.fna&oh=00_AfCHalmsf9xjH7fIkgkBGOaQ1dhmcGhRzXsWsHzEzU1Iow&oe=64062F3C'
                                 alt='useravatar'
                                 fallback={images.avatarError}

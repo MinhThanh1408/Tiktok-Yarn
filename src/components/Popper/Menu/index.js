@@ -17,6 +17,7 @@ function Menu({
     children,
     items = [],
     onChange = defaltFn,
+    hideOnClick = false,
 }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1]
@@ -42,11 +43,11 @@ function Menu({
     }
     return (
         <Tippy
+            hideOnClick={hideOnClick}
             offset={[12, 10]}
             delay={[0, 200]}
             placement="bottom-end"
             interactive={true}
-            // visible={searchResults.length > 0}
             render={(attrs) => (
                 <div className={cx('menu-wrapper')} tabIndex='-1' {...attrs}>
                     <PopperWrapper className={cx('menu-popper')}>
