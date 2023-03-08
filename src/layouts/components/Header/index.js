@@ -13,9 +13,9 @@ import images from "src/assets/images";
 import Button from "src/components/Button";
 import Menu from "src/components/Popper/Menu";
 import Image from "src/components/Image";
-import Search from "src/components/Layouts/components/Search";
+import Search from "src/Layouts/components/Search";
 import { MessageIcon, InboxIcon } from "src/components/Icon";
-import routesConfig from 'src/config/routes'
+import config from 'src/config'
 
 const cx = classNames.bind(styles);
 
@@ -189,7 +189,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home} className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <img src={images.logo} alt='Logo Alien' />
                 </Link>
                 <Search />

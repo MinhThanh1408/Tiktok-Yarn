@@ -4,7 +4,7 @@ import { IoCloseCircle } from 'react-icons/io5';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { useEffect, useState, useRef } from "react";
 
-import * as searchServices from 'src/apiServices/searchServices'
+import * as searchServices from 'src/services/searchService'
 import { Wrapper as PopperWrapper } from "src/components/Popper";
 import AccountItem from "src/components/AccountItem";
 import styles from "./Search.module.scss";
