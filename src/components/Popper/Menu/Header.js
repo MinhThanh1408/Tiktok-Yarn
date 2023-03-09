@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 
@@ -20,6 +21,10 @@ function Header({
             </h4>
         </header>
     );
+}
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+    onBack: PropTypes.func.isRequired,
 }
 
 export default Header;

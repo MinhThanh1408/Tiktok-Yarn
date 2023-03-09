@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from "classnames/bind";
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { Link } from "react-router-dom";
@@ -14,9 +15,9 @@ function AccountItem({ data }) {
         <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
             <Image
                 className={cx('avatar')}
-                src={data.avatar} 
-                    alt={data.full_name}
-                />
+                src={data.avatar}
+                alt={data.full_name}
+            />
             <div className={cx('info')}>
                 <p className={cx('name')}>
                     <span>{data.full_name}</span>
@@ -27,5 +28,9 @@ function AccountItem({ data }) {
         </Link>
     );
 }
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired,
+}
+
 
 export default AccountItem;

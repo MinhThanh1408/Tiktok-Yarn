@@ -173,8 +173,6 @@ const USER_MENU = [
 function Header() {
     const currentUser = true;
 
-
-
     const handleMenuChange = (menuItem) => {
         switch (menuItem.type) {
             case 'language':
@@ -184,7 +182,6 @@ function Header() {
                 break;
         }
     }
-
 
     return (
         <header className={cx('wrapper')}>
