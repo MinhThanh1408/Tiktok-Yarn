@@ -20,19 +20,19 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
-    const debounce = useDebounce(searchValue, 500)
+    const debounceValue = useDebounce(searchValue, 500)
 
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!debounce.trim()) {
+        if (!debounceValue.trim()) {
             setSearchResult([]);
             return;
         }
 
         const fetchApi = async () => {
             setLoading(true);
-            const result = await searchServices.search(debounce);
+            const result = await searchServices.search(debounceValue);
 
             setSearchResult(result);
             setLoading(false);
@@ -40,7 +40,7 @@ function Search() {
         };
 
         fetchApi();
-    }, [debounce])
+    }, [debounceValue])
     // Cần xem lại useEffect
 
     const handleClear = () => {
@@ -52,12 +52,14 @@ function Search() {
     const handleHideResult = () => {
         setShowResult(false);
     };
+
     const handleChange = (e) => {
         const searchValue = e.target.value;
         if (!searchValue.startsWith(' ')) {
             setSearchValue(searchValue)
         }
     };
+    
     return (
         <div className={cx('wrapper')}>
             <TippyHeadless
@@ -101,7 +103,7 @@ function Search() {
                             <AiOutlineLoading3Quarters />
                         </button>
                     )}
-                    <button className={cx('search-btn')} onMouseDown={e=>e.preventDefault()}>
+                    <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()}>
                         <SearchIcon />
                     </button>
                 </div>
