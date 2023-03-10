@@ -14,7 +14,7 @@ import Button from "src/components/Button";
 import Menu from "src/components/Popper/Menu";
 import Image from "src/components/Image";
 import Search from "src/Layouts/components/Search";
-import { MessageIcon, InboxIcon } from "src/components/Icon";
+import { MessageIcon, InboxIcon } from "src/components/Icons";
 import config from 'src/config'
 
 const cx = classNames.bind(styles);
