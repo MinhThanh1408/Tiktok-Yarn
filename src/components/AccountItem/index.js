@@ -23,7 +23,7 @@ function AccountItem({ data }) {
                     <span>{data.full_name}</span>
                     {data.tick && <BsCheckCircleFill className={cx('check')} />}
                 </p>
-                <span className={cx('username')}>{data.nickname}</span>
+                <span className={cx('nickname')}>{data.nickname}</span>
             </div>
         </Link>
     );
